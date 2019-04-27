@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+	<style>
+		.main-row {
+			max-width: 1000px;
+		}
+		.col-table {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.col-description {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.option__form {
+			border: 2px solid #cccccc;
+			padding: 10px;
+			padding-top: 0;
+		}
+		.option__row {
+			margin: 10px 0;
+		}
+		.table__box {
+			border: 2px solid #cccccc;
+			padding: 10px;
+			padding-top: 0;
+			margin-top: 20px;
+		}
+		.empty-massage {
+			display: none;
+			color: red;
+		}
+		.is-empty-open-item .empty-massage {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<h1>Demo</h1>
+	<div class="main-row">
+		<div class="col-table">
+			<div class="js-shedule">
+				<form method="POST" enctype="multipart/form-data" class="option__form js-control-form">
+					<h2>Options</h2>
+					<div class="option__row checkbox">
+						<label>
+							<input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
+							Street 1
+						</label>
+						<label>
+							<input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
+							Street 2
+						</label>
+					</div>
+					<div class="option__row radio-list">
+						<label>
+							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
+							Today
+						</label>
+						<label>
+							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
+							Tomorrow
+						</label>
+						<label>
+							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
+							All
+						</label>
+					</div>
+				</form>
+			  <div class="table__box">
+			  	<h2>Filtered table</h2>
+			  	<div class="js-shedule-category">
+			  		<h3>Category 1</h3>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 1</p>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 2</p>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 3</p>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today", "Tomorrow"]}'>Value of row 4</p>
+					</div>
+					<div class="js-shedule-category">
+						<h3>Category 2</h3>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today"]}'>Value of row 5</p>
+						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 6</p>
+					</div>
+					<p class="empty-massage">Table is empty</p>
+			  </div>
+			</div>
+		</div>
+		<div class="col-description">
+			111
+		</div>
+	</div>
+
+	<script src="../src/dz-live-filter.js"></script>
+	<script>
+		dzLiveFilter({
+			rootTag: ".js-shedule",
+			itemTag: ".js-shedule-item",
+			categoryTag: ".js-shedule-category",
+			controlFormTag: ".js-control-form",
+			controlTag: ".js-control",
+			delay: 0,
+			animationCallback: function aimationCallback (itemNode, result) {
+				itemNode.style.display = "none";
+				if (result) {
+					itemNode.style.display = "";
+				}
+			}
+		});
+	</script>
+</body>
+</html>
