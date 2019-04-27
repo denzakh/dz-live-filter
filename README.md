@@ -26,7 +26,9 @@
 к корневому элементу `rootTag` добавляется класс `is-empty-open-item`
 
 ##### Ограничения и зависимости
-Использует объект formData, который имеет плохую поддержку в IE и Safari
+Использует объект [formData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 
+ и метод (FormData.entries)[](https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries#Browser_compatibility), которые имеют ограниченную поддержку в IE и Safari
+
 Для решения этой проблемы можно подключить полифил `https://www.npmjs.com/package/formdata-polyfill`
 
 ##### Категории
