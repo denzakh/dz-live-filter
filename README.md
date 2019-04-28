@@ -9,7 +9,7 @@
 
 ## Содержание
 
-## Опмсание
+## Описание
 
 ### Особенности структуры
 Фильтры и фильтруемая таблица должны быть внутри блока с классом из свойства настроек `rootTag`.
@@ -66,22 +66,29 @@
   }'>Value of row 2</div>
 </div>
 ```
-@property {string} rootTag - класс корня
-@property {string} itemTag - класс пунктов списка
-@property {string} [categoryTag] - класс категории
-@property {string} controlFormTag - тег формы <form action="" class="js-control-form"  method="POST" enctype="multipart/form-data">
-@property {string} controlTag - тег каждого контрола (фильтра)
-@property {number | string} [delay=0] - скорость появления пунктов (может сильно затормаживать сортировку)
-@property {function} [animationCallback] - функция обработки пунктов (строк) таблицы. См. далее.
-@property {function} [afterFiltrationCallback] - функция выполняющаяся после фильтрации. Например, для нумерации строк.
 
-@see liveFilter
+## Настройки
 
-@example <caption>Подключение</caption>
+| Title                    | Type               | Description                                                                                      |
+|--------------------------|--------------------|--------------------------------------------------------------------------------------------------|
+| rootTag                  | {string}           | класс корня                                                                                      |
+| itemTag                  | {string}           | класс пунктов списка                                                                             |
+| [categoryTag]            | {string}           | класс категории                                                                                  |
+| controlFormTag           | {string}           | тег формы <form action="" class="js-control-form"  method="POST" enctype="multipart/form-data">  |
+| controlTag               | {string}           | тег каждого контрола (фильтра)                                                                   |
+| [delay=0]                | {number or string} | скорость появления пунктов (может сильно затормаживать сортировку)                               |
+| [animationCallback]      | {function}         | функция обработки пунктов (строк) таблицы. См. далее.                                            |
+| [afterFiltrationCallback]| {function}         | функция выполняющаяся после фильтрации. Например, для нумерации строк.                           |
+
+
+## Подключение
+
+Можно подключать как CommonJS модуль, AMD модуль или просто в теге скрипт в HTML.
+
+### Common JS
+```
 let liveFilter = require("./liveFilter");
 
-@example <caption>Использование</caption>
-// фильтры таблиц
 liveFilter({
     rootTag: ".js-shedule",
     itemTag: ".js-shedule-item",
@@ -94,18 +101,31 @@ liveFilter({
         if (result) {
             itemNode.style.display = "";
         }
-    },
-    afterFiltrationCallback: setTableRowNumber
-});
-
-@example <caption>Функция по умолчанию</caption>
-let defaultAimationCallback = function (itemNode, result) {
-    if (result) {
-        itemNode.style.display = "";
-    } else {
-        itemNode.style.display = "none";
     }
-}
+});
+```
+
+### HTML
+
+```
+<script src="../src/dz-live-filter.js"></script>
+<script>
+  dzLiveFilter({
+    rootTag: ".js-shedule",
+    itemTag: ".js-shedule-item",
+    categoryTag: ".js-shedule-category",
+    controlFormTag: ".js-control-form",
+    controlTag: ".js-control",
+    delay: 0,
+    animationCallback: function aimationCallback (itemNode, result) {
+      itemNode.style.display = "none";
+      if (result) {
+        itemNode.style.display = "";
+      }
+    }
+  });
+</script>
+```
 
 @example <caption>Функция нумерации строк</caption>
 // строки таблицы должны содержать класс ".js-filter-item", а ячейка с номером - ".js-number"
