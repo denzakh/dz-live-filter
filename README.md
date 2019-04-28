@@ -7,7 +7,9 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 * Opens items in sequence.
 
 ![](https://img.shields.io/badge/license-Apache%202-blue.svg) 
-![](https://img.shields.io/static/v1.svg?label=size&message=13kb&color=blue)
+![](https://img.shields.io/static/v1.svg?label=size&message=13kb&color=green)
+![](https://img.shields.io/static/v1.svg?label=version&message=1.4.0&color=orange)
+![](https://img.shields.io/github/last-commit/:user/:repo.svg)
 
 ## Demo
 
