@@ -20,10 +20,10 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 Make a project cloning in the terminal
 
 ```
-git clone git@github.com: denzakh / dz-live-filter.git
+git clone git@github.com:denzakh/dz-live-filter.git
 ```
 
-Or download [ZIP archive] (https://github.com/denzakh/dz-live-filter/archive/master.zip)
+Or download [ZIP archive](https://github.com/denzakh/dz-live-filter/archive/master.zip)
 
 ### 2. Connection
 
@@ -32,7 +32,7 @@ You can use it as a CommonJS module, an AMD module, or just plug the script into
 #### 2a. Like CommonJS module in main JS file
 
 ```
-let dzLiveFilter = require ("./ dz-live-filter.js");
+let dzLiveFilter = require ("./dz-live-filter.js");
 
 dzLiveFilter ({
     rootTag: ".js-shedule",
@@ -53,7 +53,7 @@ dzLiveFilter ({
 #### 2b. Like script in HTML
 
 ```
-<script src = "/ src / dz-live-filter.js"> </ script>
+<script src = "/src/dz-live-filter.js"> </ script>
 <script>
   dzLiveFilter ({
     rootTag: ".js-shedule",
@@ -76,16 +76,17 @@ dzLiveFilter ({
 
 During initialization, the `dzLiveFilter` function accepts a settings object with properties.
 
-| Setting name | Type | Default | Description |
-| -------------------------- | ------------------ | --- ------------------------ | ------------------------- -------------------------------------------------- ----------------------- |
-| rootTag | string | ".js-shedule" | root class |
-| itemTag | string | ".js-shedule-item" | list item class |
-| [categoryTag] | string | ".js-shedule-category" | class category |
-| controlFormTag | string | ".js-control-form" | form tag <form action = "" class = "js-control-form" method = "POST" enctype = "multipart / form-data"> |
-| controlTag | string | ".js-control" | tag of each control (filter) |
-| [delay = 0] | number or string | 0 | speed of points appearance (can slow down sorting) |
-| [animationCallback] | function | See below | the function of processing items (rows) of the table. See below. |
-| [afterFiltrationCallback] | function | - | function after filtering. |
+| Setting name             | Type             | Default                   | Description |
+|--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
+| rootTag                  | string           | ".js-shedule"             | класс корня                                                                                      |
+| itemTag                  | string           | ".js-shedule-item"        | класс пунктов списка                                                                             |
+| [categoryTag]            | string           | ".js-shedule-category"    | класс категории                                                                                  |
+| controlFormTag           | string           | ".js-control-form"        | тег формы <form action="" class="js-control-form"  method="POST" enctype="multipart/form-data">  |
+| controlTag               | string           | ".js-control"             | тег каждого контрола (фильтра)                                                                   |
+| [delay=0]                | number or string | 0                         | скорость появления пунктов (может сильно затормаживать сортировку)                               |
+| [animationCallback]      | function         | См. ниже                  | функция обработки пунктов (строк) таблицы. См. далее.                                            |
+| [afterFiltrationCallback]| function         | -                         | функция выполняющаяся после фильтрации.                                                          |
+
 
 **Default function animationCallback**
 ```
