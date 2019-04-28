@@ -5,15 +5,18 @@
 Позволяет легко добавить любое количество фильтров.
 Открывает пункты пошагово. 
 
-![](liveFilter.png)
-
+![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
 ## Использование 
 
 ### 1 Скачивание файлов
 
+Сделать клонирование проекта в терминале
 ```
+git clone git@github.com:denzakh/dz-live-filter.git
 ```
+
+Или скачать [ZIP-архив](https://github.com/denzakh/dz-live-filter/archive/master.zip)
 
 ### 2 Подключение
 
