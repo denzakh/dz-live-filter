@@ -10,8 +10,8 @@
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
-* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) - ничего лишнего, удобно для разработки
 * Полное демо [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - позволяет посмотреть все возможности
+* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) - ничего лишнего, удобно для разработки
 
 ## Использование 
 
@@ -26,14 +26,14 @@ git clone git@github.com:denzakh/dz-live-filter.git
 
 ### 2. Подключение
 
-Можно подключать как CommonJS модуль, AMD модуль или используя скрипт в HTML.
+Можно использовать как CommonJS модуль, AMD модуль или просто подключить скрипт в HTML.
 
-#### 2.a Like CommonJS module in main JS file
+#### 2a. Like CommonJS module in main JS file
 
 ```
-let liveFilter = require("./liveFilter");
+let dzLiveFilter = require("./dz-live-filter.js");
 
-liveFilter({
+dzLiveFilter({
     rootTag: ".js-shedule",
     itemTag: ".js-shedule-item",
     categoryTag: ".js-shedule-category"
@@ -49,7 +49,7 @@ liveFilter({
 });
 ```
 
-#### 2.b Like script in HTML
+#### 2b. Like script in HTML
 
 ```
 <script src="/src/dz-live-filter.js"></script>
@@ -72,7 +72,9 @@ liveFilter({
 ```
 
 
-### 3. Настройка
+### 3. Настройки
+
+При инициализации функция dzLiveFilter принимает объект настроек со свойствами.
 
 | Setting name             | Type             | Default                   | Description                                                                                      |
 |--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
@@ -115,13 +117,14 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-
+Каждый элемент управления представляет собой блок с набором `input[type="checkbox"]` или `input[type="radio"]`, c одинаковыми атрибутами `name`, но размыми значениями `value`
 
 ```
-<div class="checkbox">
+<div class="checkbox-list">
   <input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
   <input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
 </div>
+
 <div class="radio-list">
   <input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
   <input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
@@ -129,20 +132,15 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-В пунктах itemTag, в атрибуте data-filter должны находится JSON-объект,
-свойства которого должны соответствовать именам фильтров,
-а значения - содержать массив строк, которое это свойство может принимать у данного пункта.
+Каждая фильтруемая строка должна иметь атрибут `data-filter`, в котором находится JSON-объект, содержащий свойства этой строки.
+Каждое свойство соответствует имени фильтра, на который строка будет реагировать. Например `input name="address"` и поле `address`.
+Поле содержит массив значений, при выборе которых строка будет показана. 
+Например, строка с полем `"time": ["All", "Tomorrow"]` будет показана, если выбран checkbox со значением `All` или `Tomorrow`.
 
 ```
-<div class="js-shedule-category">
-  <div class="js-shedule-item" data-filter='{
-      "address": ["Street 1"],
-      "time": ["All", "Today"],
-  }'>Value of row 1</div>
-  <div class="js-shedule-item" data-filter='{
-      "address": ["Street 2"],
-      "time": ["All", "Tomorrow"],
-  }'>Value of row 2</div>
+<div class="table__box">
+  <p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 1</p>
+  <p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 2</p>
 </div>
 ```
 
