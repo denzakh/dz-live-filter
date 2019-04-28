@@ -6,7 +6,7 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 * Allows you to easily add any number of filters using the `input` tags.
 * Opens items in sequence.
 
-![](https://img.shields.io/static/v1.svg?label=size&message=13kb&color=green)
+![](https://img.shields.io/github/repo-size/denzakh/dz-live-filter.svg)
 ![](https://img.shields.io/static/v1.svg?label=version&message=1.4.0&color=orange)
 ![](https://img.shields.io/github/last-commit/denzakh/dz-live-filter.svg)
 ![](https://img.shields.io/badge/license-Apache%202-blue.svg) 
@@ -15,7 +15,7 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
-* Full demo [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - allows you to see all the possibilities.
+* [Full demo](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) - allows you to see all the possibilities.
 * [Minimal demo](https://denzakh.github.io/dz-live-filter/demo/demo.html) - convenient to use as a template for development.
 
 ## Getting Started
