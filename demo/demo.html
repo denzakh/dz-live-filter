@@ -5,15 +5,8 @@
 	<title>Demo</title>
 	<style>
 		.main-row {
-			max-width: 1000px;
-		}
-		.col-table {
-			display: inline-block;
-			vertical-align: top;
-		}
-		.col-description {
-			display: inline-block;
-			vertical-align: top;
+			width: 400px;
+			margin: 0 auto;
 		}
 		.option__form {
 			border: 2px solid #cccccc;
@@ -39,59 +32,56 @@
 	</style>
 </head>
 <body>
-	<h1>Demo</h1>
-	<div class="main-row">
-		<div class="col-table">
-			<div class="js-shedule">
-				<form method="POST" enctype="multipart/form-data" class="option__form js-control-form">
-					<h2>Options</h2>
-					<div class="option__row checkbox">
-						<label>
-							<input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
-							Street 1
-						</label>
-						<label>
-							<input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
-							Street 2
-						</label>
-					</div>
-					<div class="option__row radio-list">
-						<label>
-							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
-							Today
-						</label>
-						<label>
-							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
-							Tomorrow
-						</label>
-						<label>
-							<input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
-							All
-						</label>
-					</div>
-				</form>
-				<div class="table__box">
-					<h2>Filtered table</h2>
-					<div class="js-shedule-category">
-						<h3>Category 1</h3>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 1</p>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 2</p>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 3</p>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today", "Tomorrow"]}'>Value of row 4</p>
-					</div>
-					<div class="js-shedule-category">
-						<h3>Category 2</h3>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today"]}'>Value of row 5</p>
-						<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 6</p>
-					</div>
-					<p class="empty-massage">Table is empty</p>
+	<main>
+		<h1>Demo</h1>
+		<div class="js-shedule">
+			<form method="POST" enctype="multipart/form-data" class="option__form js-control-form">
+				<h2>Options</h2>
+				<div class="option__row checkbox">
+					<label>
+						<input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
+						Street 1
+					</label>
+					<label>
+						<input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
+						Street 2
+					</label>
 				</div>
+				<div class="option__row radio-list">
+					<label>
+						<input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
+						Today
+					</label>
+					<label>
+						<input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
+						Tomorrow
+					</label>
+					<label>
+						<input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
+						All
+					</label>
+				</div>
+			</form>
+			<div class="table__box">
+				<h2>Filtered table</h2>
+				<div class="js-shedule-category">
+					<h3>Category 1</h3>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 1</p>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 2</p>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 3</p>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today", "Tomorrow"]}'>Value of row 4</p>
+				</div>
+				<div class="js-shedule-category">
+					<h3>Category 2</h3>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today"]}'>Value of row 5</p>
+					<p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 6</p>
+				</div>
+				<p class="empty-massage">Table is empty</p>
 			</div>
 		</div>
-		<div class="col-description">
-			111
-		</div>
-	</div>
+	</main>
+
+
 
 	<script src="../src/dz-live-filter.js"></script>
 	<script>
