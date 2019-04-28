@@ -5,13 +5,22 @@
 * Сортирует пункты в зависимости от переключения взаимодействующих фильтров.
 * Позволяет легко добавлять любое количество фильтров с помощью тегов <input>
 * Открывает пункты последовательно.
-  
+
+---
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
+---
+
+## Демо
+
+* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) (удобно для разработки) 
+* Полное демо [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html)
+* [Видео](https://youtu.be/vPtYdjl97m0)
+
 ## Использование 
 
-### 1 Скачивание файлов
+### 1. Скачивание файлов
 
 Сделать клонирование проекта в терминале
 ```
@@ -20,11 +29,11 @@ git clone git@github.com:denzakh/dz-live-filter.git
 
 Или скачать [ZIP-архив](https://github.com/denzakh/dz-live-filter/archive/master.zip)
 
-### 2 Подключение
+### 2. Подключение
 
 Можно подключать как CommonJS модуль, AMD модуль или используя скрипт в HTML.
 
-#### 2a Like CommonJS module in main JS file
+#### 2.a Like CommonJS module in main JS file
 
 ```
 let liveFilter = require("./liveFilter");
@@ -45,7 +54,7 @@ liveFilter({
 });
 ```
 
-#### 2b Like script in HTML
+#### 2.b Like script in HTML
 
 ```
 <script src="/src/dz-live-filter.js"></script>
@@ -68,7 +77,7 @@ liveFilter({
 ```
 
 
-### 3 Настройка
+### 3. Настройка
 
 | Setting name             | Type             | Default                   | Description                                                                                      |
 |--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
@@ -84,14 +93,33 @@ liveFilter({
 **Default function animationCallback**
 ```
 animationCallback: function aimationCallback (itemNode, result) {
-    itemNode.style.display = "none";
-    if (result) {
-        itemNode.style.display = "";
-    }
+  itemNode.style.display = "none";
+  if (result) {
+      itemNode.style.display = "";
+  }
 }
 ```
 
-### 4 Разметка
+### 4. Разметка
+
+* В HTML страницу нужно добавить блок-обертку с классом, указанным в свойстве rootTag ("js-shedule").
+* В нем должна быть форма с классом, указанным в свойстве controlFormTag ("js-control-form") и блок со списком.
+* В этом блоке будут фильтруемые строки с классом, указанным в свойстве itemTag ("js-shedule-item").
+
+```
+<div class="js-shedule">
+  <form method="POST" enctype="multipart/form-data" class="js-control-form">
+    <!-- Здесь будут элементы управления -->
+  </form>
+  <div class="table__box">
+    <!-- Здесь будут фильтруемые элементы -->
+    <p class="js-shedule-item">Value of row 1</p>
+    <p class="js-shedule-item">Value of row 2</p>
+    <p class="js-shedule-item">Value of row 3</p>
+  </div>
+</div>
+```
+
 
 
 ```
@@ -105,9 +133,11 @@ animationCallback: function aimationCallback (itemNode, result) {
   <input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
 </div>
 ```
+
 В пунктах itemTag, в атрибуте data-filter должны находится JSON-объект,
 свойства которого должны соответствовать именам фильтров,
 а значения - содержать массив строк, которое это свойство может принимать у данного пункта.
+
 ```
 <div class="js-shedule-category">
   <div class="js-shedule-item" data-filter='{
