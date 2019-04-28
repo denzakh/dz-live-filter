@@ -6,6 +6,9 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 * Allows you to easily add any number of filters using the `input` tags.
 * Opens items in sequence.
 
+![](https://img.shields.io/badge/license-Apache%202-blue.svg) 
+![](https://img.shields.io/static/v1.svg?label=size&message=13kb&color=blue)
+
 ## Demo
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
@@ -191,6 +194,6 @@ This can be used to display a missing item message.
 ### Limitations and dependencies
 
 Uses the [formData object](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
- and the `FormData.entries()` method, which have [limited support](https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) in IE and Safari
+ and the `FormData.entries()` method, which have [limited support](https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) in brousers.
 
 To solve this problem you can connect [formdata-polyfill](https://www.npmjs.com/package/formdata-polyfill)
