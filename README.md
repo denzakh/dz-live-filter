@@ -1,22 +1,17 @@
-# DZ Live Filter
+# Live Filter
 
 Скрипт фильтрации списков (строк таблиц) на чистом JavaScript.
 
 * Сортирует пункты в зависимости от переключения взаимодействующих фильтров.
-* Позволяет легко добавлять любое количество фильтров с помощью тегов <input>
+* Позволяет легко добавлять любое количество фильтров с помощью тегов `input`
 * Открывает пункты последовательно.
-
----
-
-![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
-
----
 
 ## Демо
 
-* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) (удобно для разработки) 
-* Полное демо [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html)
-* [Видео](https://youtu.be/vPtYdjl97m0)
+![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
+
+* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) - ничего лишнего, удобно для разработки
+* Полное демо [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - позволяет посмотреть все возможности
 
 ## Использование 
 
