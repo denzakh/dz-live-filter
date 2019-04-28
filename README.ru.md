@@ -1,93 +1,93 @@
 # Live Filter
 
-Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](https://denzakh.github.io/dz-live-filter/README.ru.md)
+Скрипт фильтрации списков (строк таблиц) на чистом JavaScript. [Readme in english](https://denzakh.github.io/dz-live-filter)
 
-* Sorts items depending on the switching of interacting filters.
-* Allows you to easily add any number of filters using the `input` tags
-* Opens items in sequence.
+* Сортирует пункты в зависимости от переключения взаимодействующих фильтров.
+* Позволяет легко добавлять любое количество фильтров с помощью тегов `input`
+* Открывает пункты последовательно.
 
-## Demo
+## Демо
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
-* Full demo [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - allows you to see all the possibilities
-* [Minimal demo](https://denzakh.github.io/dz-live-filter/demo/demo.html) - convenient to use as a template for development
+* [Полное демо](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - позволяет посмотреть все возможности
+* [Минимальное демо](https://denzakh.github.io/dz-live-filter/demo/demo.html) - ничего лишнего, удобно использовать как шаблон для разработки
 
-## Use
+## Использование 
 
-### 1. Downloading files
+### 1. Скачивание файлов
 
-Make a project cloning in the terminal
+Сделать клонирование проекта в терминале
+```
+git clone git@github.com:denzakh/dz-live-filter.git
+```
+
+Или скачать [ZIP-архив](https://github.com/denzakh/dz-live-filter/archive/master.zip)
+
+### 2. Подключение
+
+Можно использовать как CommonJS модуль, AMD модуль или просто подключить скрипт в HTML.
+
+#### 2a. Подключение в качестве CommonJS модуля в основной JS файл
 
 ```
-git clone git@github.com: denzakh / dz-live-filter.git
-```
+let dzLiveFilter = require("./dz-live-filter.js");
 
-Or download [ZIP archive] (https://github.com/denzakh/dz-live-filter/archive/master.zip)
-
-### 2. Connection
-
-You can use it as a CommonJS module, an AMD module, or just plug the script into HTML.
-
-#### 2a. Like CommonJS module in main JS file
-
-```
-let dzLiveFilter = require ("./ dz-live-filter.js");
-
-dzLiveFilter ({
-    rootTag: ".js-shedule",
-    itemTag: ".js-shedule-item",
-    categoryTag: ".js-shedule-category"
-    controlFormTag: ".js-control-form",
-    controlTag: ".js-control",
-    delay: 0,
-    animationCallback: function aimationCallback (itemNode, result) {
-        itemNode.style.display = "none";
-        if (result) {
-            itemNode.style.display = "";
-        }
-    }
+dzLiveFilter({
+    rootTag: ".js-shedule",
+    itemTag: ".js-shedule-item",
+    categoryTag: ".js-shedule-category"
+    controlFormTag: ".js-control-form",
+    controlTag: ".js-control",
+    delay: 0,
+    animationCallback: function aimationCallback (itemNode, result) {
+        itemNode.style.display = "none";
+        if (result) {
+            itemNode.style.display = "";
+        }
+    }
 });
 ```
 
-#### 2b. Like script in HTML
+#### 2b. Подключение тегом script в HTML
 
 ```
-<script src = "/ src / dz-live-filter.js"> </ script>
+<script src="/src/dz-live-filter.js"></script>
 <script>
-  dzLiveFilter ({
-    rootTag: ".js-shedule",
-    itemTag: ".js-shedule-item",
-    categoryTag: ".js-shedule-category",
-    controlFormTag: ".js-control-form",
-    controlTag: ".js-control",
-    delay: 0,
-    animationCallback: function aimationCallback (itemNode, result) {
-      itemNode.style.display = "none";
-      if (result) {
-        itemNode.style.display = "";
-      }
-    }
-  });
-</ script>
+  dzLiveFilter({
+    rootTag: ".js-shedule",
+    itemTag: ".js-shedule-item",
+    categoryTag: ".js-shedule-category",
+    controlFormTag: ".js-control-form",
+    controlTag: ".js-control",
+    delay: 0,
+    animationCallback: function aimationCallback (itemNode, result) {
+      itemNode.style.display = "none";
+      if (result) {
+        itemNode.style.display = "";
+      }
+    }
+  });
+</script>
 ```
 
-### 3. Settings
 
-During initialization, the `dzLiveFilter` function accepts a settings object with properties.
+### 3. Настройки
 
-| Setting name | Type | Default | Description |
-| -------------------------- | ------------------ | --- ------------------------ | ------------------------- -------------------------------------------------- ----------------------- |
-| rootTag | string | ".js-shedule" | root class |
-| itemTag | string | ".js-shedule-item" | list item class |
-| [categoryTag] | string | ".js-shedule-category" | class category |
-| controlFormTag | string | ".js-control-form" | form tag <form action = "" class = "js-control-form" method = "POST" enctype = "multipart / form-data"> |
-| controlTag | string | ".js-control" | tag of each control (filter) |
-| [delay = 0] | number or string | 0 | speed of points appearance (can slow down sorting) |
-| [animationCallback] | function | See below | the function of processing items (rows) of the table. See below. |
-| [afterFiltrationCallback] | function | - | function after filtering. |
+При инициализации функция dzLiveFilter принимает объект настроек со свойствами.
 
-**Default function animationCallback**
+| Название свойсва             | Тип             | Значение по умолчанию                   | Описание                                                                                      |
+|--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
+| rootTag                  | string           | ".js-shedule"             | класс корня                                                                                      |
+| itemTag                  | string           | ".js-shedule-item"        | класс пунктов списка                                                                             |
+| [categoryTag]            | string           | ".js-shedule-category"    | класс категории                                                                                  |
+| controlFormTag           | string           | ".js-control-form"        | тег формы <form action="" class="js-control-form"  method="POST" enctype="multipart/form-data">  |
+| controlTag               | string           | ".js-control"             | тег каждого контрола (фильтра)                                                                   |
+| [delay=0]                | number or string | 0                         | скорость появления пунктов (может сильно затормаживать сортировку)                               |
+| [animationCallback]      | function         | См. ниже                  | функция обработки пунктов (строк) таблицы. См. далее.                                            |
+| [afterFiltrationCallback]| function         | -                         | функция выполняющаяся после фильтрации.                                                          |
+
+**Функция animationCallback по умолчанию**
 ```
 animationCallback: function aimationCallback (itemNode, result) {
   itemNode.style.display = "none";
