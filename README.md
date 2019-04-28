@@ -99,9 +99,10 @@ animationCallback: function aimationCallback (itemNode, result) {
 
 ### 4. Разметка
 
-* В HTML страницу нужно добавить блок-обертку с классом, указанным в свойстве rootTag ("js-shedule").
-* В нем должна быть форма с классом, указанным в свойстве controlFormTag ("js-control-form") и блок со списком.
-* В этом блоке будут фильтруемые строки с классом, указанным в свойстве itemTag ("js-shedule-item").
+* В HTML страницу нужно добавить блок-обертку с классом, указанным в свойстве `rootTag` ("js-shedule").
+* В нем должна быть форма с классом, указанным в свойстве `controlFormTag` ("js-control-form") и блок со списком.
+* У формы должны быть атрибуты `method="POST" enctype="multipart/form-data"`
+* В этом блоке будут фильтруемые строки с классом, указанным в свойстве `itemTag` ("js-shedule-item").
 
 ```
 <div class="js-shedule">
@@ -117,19 +118,21 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-Каждый элемент управления представляет собой блок с набором `input[type="checkbox"]` или `input[type="radio"]`, c одинаковыми атрибутами `name`, но размыми значениями `value`
+Каждый элемент управления представляет собой блок с набором `input[type="checkbox"]`, `input[type="radio"]` или даже `input[type="text"]`, c одинаковыми атрибутами `name`, но размыми значениями `value`.
+Все input должны иметь класс, указанный в свойстве `controlTag` ("js-control") и должны быть расположены внутри формы.
 
 ```
-<div class="checkbox-list">
-  <input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
-  <input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
-</div>
-
-<div class="radio-list">
-  <input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
-  <input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
-  <input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
-</div>
+<form method="POST" enctype="multipart/form-data" class="js-control-form">
+  <div class="checkbox-list">
+    <input type="checkbox" class="js-control" name="address" id="adress1" value="Street 1" checked>
+    <input type="checkbox" class="js-control" name="address" id="adress2" value="Street 2" checked>
+  </div>
+  <div class="radio-list">
+    <input type="radio" class="schedule-filter__radio js-control" name="time" id="time1" value="Today">
+    <input type="radio" class="schedule-filter__radio js-control" name="time" id="time2" value="Tomorrow">
+    <input type="radio" class="schedule-filter__radio js-control" name="time" id="time3" value="All" checked>
+  </div>
+</form>
 ```
 
 Каждая фильтруемая строка должна иметь атрибут `data-filter`, в котором находится JSON-объект, содержащий свойства этой строки.
@@ -146,17 +149,10 @@ animationCallback: function aimationCallback (itemNode, result) {
 
 ## Описание
 
-### Особенности структуры
-Фильтры и фильтруемая таблица должны быть внутри блока с классом из свойства настроек `rootTag`.
-Фильтры находятся внутри формы с классом из свойства `controlFormTag`.
-У формы должны быть атрибуты `method="POST" enctype="multipart/form-data"`
-Поля фильтров с классом `controlTag` (текстовые инпуты, чекбоксы, радиокнопки) 
-расположены внутри формы, обязательно должны иметь имя и значение.
-
 ### Особенности чекбоксов
-Если чекбоксы объединены в одну группу (имеют одно имя) и хотя бы один из них включен (checked),
-то фильтрация происходит по активным чекбоксам.
-Если ни один из них не влючен, показываются все значения.
+
+* Если чекбоксы объединены в одну группу (имеют одно имя) и хотя бы один из них включен (checked), то фильтрация происходит только по активным чекбоксам. Если ни один из них не влючен, показываются все значения.
+* Фильтры взаимодействуют по типу `логического И`. Например, строка, содержащая `"address": ["Street 2"],"time": ["Tomorrow"]` будет показана только в случае, если в разных фильтрах одновременно выбраны и `Street 2` и `Tomorrow`
 
 ### Особенности работы скрипта
 На время фильтрации добавляет к корневому элементу (rootTag) класс `is-filter-sorting`.
