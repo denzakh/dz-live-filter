@@ -138,7 +138,7 @@ animationCallback: function aimationCallback (itemNode, result) {
 Каждая фильтруемая строка должна иметь атрибут `data-filter`, в котором находится JSON-объект, содержащий свойства этой строки.
 Каждое свойство соответствует имени фильтра, на который строка будет реагировать. Например `input name="address"` и поле `address`.
 Поле содержит массив значений, при выборе которых строка будет показана. 
-Например, строка с полем `"time": ["All", "Tomorrow"]` будет показана, если выбран checkbox со значением `All` или `Tomorrow`.
+Например, строка с полем `"time":&nbsp;["All",&nbsp;"Tomorrow"]` будет показана, если выбран checkbox со значением `All` или `Tomorrow`.
 
 ```
 <div class="table__box">
@@ -147,26 +147,46 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
+Если вложить пункты в блок с категорией и добавить этому блоку класс, соответствующий опции `categoryTag` ("js-shedule-category"), то при  фильтрации будет учитываться категория.
+Если в результате фильтрации в категории не будет видимых пунктов, то блок категории также будет скрыт.
+
+```
+<div class="table__box">
+  <h2>Filtered table</h2>
+  <div class="js-shedule-category">
+    <h3>Category 1</h3>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 1</p>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 2</p>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 1"],"time": ["All", "Today"]}'>Value of row 3</p>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today", "Tomorrow"]}'>Value of row 4</p>
+  </div>
+  <div class="js-shedule-category">
+    <h3>Category 2</h3>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Today"]}'>Value of row 5</p>
+    <p class="js-shedule-item" data-filter='{"address": ["Street 2"],"time": ["All", "Tomorrow"]}'>Value of row 6</p>
+  </div>
+</div>
+```
+
 ## Описание
 
 ### Особенности чекбоксов
 
 * Если чекбоксы объединены в одну группу (имеют одно имя) и хотя бы один из них включен (checked), то фильтрация происходит только по активным чекбоксам. Если ни один из них не влючен, показываются все значения.
-* Фильтры взаимодействуют по типу `логического И`. Например, строка, содержащая `"address": ["Street 2"],"time": ["Tomorrow"]` будет показана только в случае, если в разных фильтрах одновременно выбраны и `Street 2` и `Tomorrow`
+* Фильтры взаимодействуют по типу `логического И`. Например, строка, содержащая `"address": ["Street&nbsp;2"],"time": ["Tomorrow"]` будет показана только в случае, если в разных фильтрах одновременно выбраны и `Street&nbsp;2` и `Tomorrow`
 
 ### Особенности работы скрипта
-На время фильтрации добавляет к корневому элементу (rootTag) класс `is-filter-sorting`.
-В конце фильтрации добавляет к корневому элементу класс `filter-was-sorted`.
+
+На время фильтрации добавляет к корневому элементу `js-shedule` класс `is-filter-sorting`.
+В конце фильтрации добавляет к корневому элементу класс `filter-was-sorted`. Это можно использовать для CSS анимаций.
+
 Если в результате фильтрации количество выводимых элементов стало равно нулю,
-к корневому элементу `rootTag` добавляется класс `is-empty-open-item`
+к корневому элементу `js-shedule` добавляется класс `is-empty-open-item`
+Это можно использовать для вывода сообщения об отсутствии элементов.
 
 ### Ограничения и зависимости
+
 Использует объект [formData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 
  и метод `FormData.entries()`, которые имеют [ограниченную поддержку](https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) в IE и Safari
 
 Для решения этой проблемы можно подключить [formdata-polyfill](https://www.npmjs.com/package/formdata-polyfill)
-
-### Категории
-Если вложить пункты внутри блоков категории и добавить этим блокам класс,
-соответствующий опции `categoryTag`, то такие категории будут скрываться,
-если в результате фильтрации в них не будет пунктов
