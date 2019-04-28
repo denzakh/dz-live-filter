@@ -1,6 +1,6 @@
 # Live Filter
 
-Script filtering lists (rows of tables) in <span style="background-color: yellow"> pure JavaScript </span>. [Readme in Russian](https://denzakh.github.io/dz-live-filter/README.ru.md)
+Script filtering lists (rows of tables) in <span style="background: yellow">pure JavaScript</span>. [Translation into Russian](https://github.com/denzakh/dz-live-filter/blob/master/README.ru.md)
 
 * Sorts items depending on the switching of interacting filters.
 * Allows you to easily add any number of filters using the `input` tags.
