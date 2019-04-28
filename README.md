@@ -1,6 +1,6 @@
 # Live Filter
 
-Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](https://denzakh.github.io/dz-live-filter/README.ru.md)
+Script filtering lists (rows of tables) in <span style="background-color: yellow"> pure JavaScript </span>. [Readme in Russian](https://denzakh.github.io/dz-live-filter/README.ru.md)
 
 * Sorts items depending on the switching of interacting filters.
 * Allows you to easily add any number of filters using the `input` tags.
@@ -145,7 +145,7 @@ Each filtered string must have a `data-filter` attribute containing a JSON objec
 Each property corresponds to the name of the filter to which the line will respond. For example, `input name="address"` and the field `address`.
 
 The field contains an array of values that, when selected, will display the string.
-For example, a line with a `"time "field:& nbsp;["All",&nbsp;"Tomorrow"]` will be shown if a checkbox with the value `All` or` Tomorrow` is selected.
+For example, a line with a field `"time":["All", "Tomorrow"]` will be shown if a checkbox with the value `All` or `Tomorrow` is selected.
 
 ```
 <div class="table__box">
@@ -182,7 +182,7 @@ If as a result of filtering there are no visible items in the category, the cate
 If checkboxes are combined into one group (they have one name) and at least one of them is included (checked), then filtering occurs only by active checkboxes. If none of them are included, all values ​​are displayed.
 
 Filters interact by the type of `logical AND`. For example, a string containing
-`"address":["Street&nbsp;2"],"time":["Tomorrow"]` will be shown only if `Street&nbsp;2` and `Tomorrow` are selected in different filters simultaneously.
+`"address":["Street 2"],"time":["Tomorrow"]` will be shown only if `Street 2` and `Tomorrow` are selected in different filters simultaneously.
 
 ### Features of the script
 
