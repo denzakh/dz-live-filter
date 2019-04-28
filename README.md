@@ -3,15 +3,15 @@
 Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](https://denzakh.github.io/dz-live-filter/README.ru.md)
 
 * Sorts items depending on the switching of interacting filters.
-* Allows you to easily add any number of filters using the `input` tags
+* Allows you to easily add any number of filters using the `input` tags.
 * Opens items in sequence.
 
 ## Demo
 
 ![](https://raw.githubusercontent.com/denzakh/dz-live-filter/master/demo-full/slides/slides.gif)
 
-* Full demo [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - allows you to see all the possibilities
-* [Minimal demo](https://denzakh.github.io/dz-live-filter/demo/demo.html) - convenient to use as a template for development
+* Full demo [English](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-en.html) или [Russian](https://denzakh.github.io/dz-live-filter/demo-full/demo-full-ru.html) - allows you to see all the possibilities.
+* [Minimal demo](https://denzakh.github.io/dz-live-filter/demo/demo.html) - convenient to use as a template for development.
 
 ## Use
 
@@ -78,15 +78,14 @@ During initialization, the `dzLiveFilter` function accepts a settings object wit
 
 | Setting name             | Type             | Default                   | Description |
 |--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
-| rootTag                  | string           | ".js-shedule"             | класс корня                                                                                      |
-| itemTag                  | string           | ".js-shedule-item"        | класс пунктов списка                                                                             |
-| [categoryTag]            | string           | ".js-shedule-category"    | класс категории                                                                                  |
-| controlFormTag           | string           | ".js-control-form"        | тег формы <form action="" class="js-control-form"  method="POST" enctype="multipart/form-data">  |
-| controlTag               | string           | ".js-control"             | тег каждого контрола (фильтра)                                                                   |
-| [delay=0]                | number or string | 0                         | скорость появления пунктов (может сильно затормаживать сортировку)                               |
-| [animationCallback]      | function         | См. ниже                  | функция обработки пунктов (строк) таблицы. См. далее.                                            |
-| [afterFiltrationCallback]| function         | -                         | функция выполняющаяся после фильтрации.                                                          |
-
+| rootTag                  | string           | ".js-shedule"             | root class                                                                                      |
+| itemTag                  | string           | ".js-shedule-item"        | item class списка                                                                             |
+| [categoryTag]            | string           | ".js-shedule-category"    | category class                                                                                  |
+| controlFormTag           | string           | ".js-control-form"        | form class  |
+| controlTag               | string           | ".js-control"             | control class (фильтра)                                                                   |
+| [delay=0]                | number or string | 0                         | the speed of the appearance of points (can greatly slow down the sorting)                               |
+| [animationCallback]      | function         | См. ниже                  | the function of processing items (rows) of the table. See below.                                        |
+| [afterFiltrationCallback]| function         | -                         | function after filtering.                                                          |
 
 **Default function animationCallback**
 ```
@@ -100,18 +99,18 @@ animationCallback: function aimationCallback (itemNode, result) {
 
 ### 4. Разметка
 
-* В HTML страницу нужно добавить блок-обертку с классом, указанным в свойстве `rootTag` ("js-shedule").
-* В нем должна быть форма с классом, указанным в свойстве `controlFormTag` ("js-control-form") и блок со списком.
-* У формы должны быть атрибуты `method="POST" enctype="multipart/form-data"`
-* В этом блоке будут фильтруемые строки с классом, указанным в свойстве `itemTag` ("js-shedule-item").
+* In the HTML page, you need to add a block wrapper with the class specified in the `rootTag` ("js-shedule") property.
+* It must have a form with the class specified in the property `controlFormTag` ("js-control-form") and a block with a list.
+* A form must have the attributes `method =" POST "enctype ="multipart/form-data "`.
+* In this block there will be filtered lines with the class specified in the `itemTag` ("js-shedule-item") property.
 
 ```
 <div class="js-shedule">
   <form method="POST" enctype="multipart/form-data" class="js-control-form">
-    <!-- Здесь будут элементы управления -->
+    <!-- There will be controls -->
   </form>
   <div class="table__box">
-    <!-- Здесь будут фильтруемые элементы -->
+    <!-- There will be filtered items -->
     <p class="js-shedule-item">Value of row 1</p>
     <p class="js-shedule-item">Value of row 2</p>
     <p class="js-shedule-item">Value of row 3</p>
@@ -119,9 +118,9 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-Каждый элемент управления представляет собой блок с набором `input[type="checkbox"]`, `input[type="radio"]` или даже `input[type="text"]`, c одинаковыми атрибутами `name`, но размыми значениями `value`.
+Each control is a block with a set of `input [type="checkbox"]`, `input [type="radio"]` or even `input [type="text"]`, with the same attributes `name`, but blur values `value`.
 
-Все input должны иметь класс, указанный в свойстве `controlTag` ("js-control") и должны быть расположены внутри формы.
+All inputs must have a class specified in the `controlTag` ("js-control") property and must be located inside the form.
 
 ```
 <form method="POST" enctype="multipart/form-data" class="js-control-form">
@@ -137,11 +136,11 @@ animationCallback: function aimationCallback (itemNode, result) {
 </form>
 ```
 
-Каждая фильтруемая строка должна иметь атрибут `data-filter`, в котором находится JSON-объект, содержащий свойства этой строки.
-Каждое свойство соответствует имени фильтра, на который строка будет реагировать. Например `input name="address"` и поле `address`.
+Each filtered string must have a `data-filter` attribute containing a JSON object containing the properties of this string.
+Each property corresponds to the name of the filter to which the line will respond. For example, `input name="address"` and the field `address`.
 
-Поле содержит массив значений, при выборе которых строка будет показана. 
-Например, строка с полем `"time":&nbsp;["All",&nbsp;"Tomorrow"]` будет показана, если выбран checkbox со значением `All` или `Tomorrow`.
+The field contains an array of values that, when selected, will display the string.
+For example, a line with a `"time "field:& nbsp;["All",&nbsp;"Tomorrow"]` will be shown if a checkbox with the value `All` or` Tomorrow` is selected.
 
 ```
 <div class="table__box">
@@ -150,8 +149,8 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-Если вложить пункты в блок с категорией и добавить этому блоку класс, соответствующий опции `categoryTag` ("js-shedule-category"), то при  фильтрации будет учитываться категория.
-Если в результате фильтрации в категории не будет видимых пунктов, то блок категории также будет скрыт.
+If you put points into a block with a category and add a block to this block that matches the `categoryTag` ("js-shedule-category") option, then the category will be taken into account when filtering.
+If as a result of filtering there are no visible items in the category, the category block will also be hidden.
 
 ```
 <div class="table__box">
@@ -171,27 +170,27 @@ animationCallback: function aimationCallback (itemNode, result) {
 </div>
 ```
 
-## Описание работы
+## Description of work
 
-### Особенности чекбоксов
+### Checkbox Features
 
-Если чекбоксы объединены в одну группу (имеют одно имя) и хотя бы один из них включен (checked), то фильтрация происходит только по активным чекбоксам. Если ни один из них не влючен, показываются все значения.
+If checkboxes are combined into one group (they have one name) and at least one of them is included (checked), then filtering occurs only by active checkboxes. If none of them are included, all values ​​are displayed.
 
-Фильтры взаимодействуют по типу `логического И`. Например, строка, содержащая    
-`"address": ["Street&nbsp;2"],"time": ["Tomorrow"]` будет показана только в случае, если в разных фильтрах одновременно выбраны и `Street&nbsp;2` и `Tomorrow`
+Filters interact by the type of `logical AND`. For example, a string containing
+`"address":["Street&nbsp;2"],"time":["Tomorrow"]` will be shown only if `Street&nbsp;2` and `Tomorrow` are selected in different filters simultaneously.
 
-### Особенности работы скрипта
+### Features of the script
 
-На время фильтрации добавляет к корневому элементу `js-shedule` класс `is-filter-sorting`.
-В конце фильтрации добавляет к корневому элементу класс `filter-was-sorted`. Это можно использовать для CSS анимаций.
+At the time of filtering, it adds the class `is-filter-sorting` to the root element` js-shedule`.
+At the end of the filtering, adds the class `filter-was-sorted` to the root element. This can be used for CSS animations.
 
-Если в результате фильтрации количество выводимых элементов стало равно нулю,
-к корневому элементу `js-shedule` добавляется класс `is-empty-open-item`
-Это можно использовать для вывода сообщения об отсутствии элементов.
+If, as a result of filtering, the number of output elements is zero,
+the class `is-empty-open` is added to the root element `js-shedule`
+This can be used to display a missing item message.
 
-### Ограничения и зависимости
+### Limitations and dependencies
 
-Использует объект [formData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 
- и метод `FormData.entries()`, которые имеют [ограниченную поддержку](https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) в IE и Safari
+Uses the [formData] object (https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+ and the `FormData.entries()` method, which have [limited support] (https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) in IE and Safari
 
-Для решения этой проблемы можно подключить [formdata-polyfill](https://www.npmjs.com/package/formdata-polyfill)
+To solve this problem you can connect [formdata-polyfill](https://www.npmjs.com/package/formdata-polyfill)
