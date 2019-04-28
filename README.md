@@ -15,7 +15,7 @@ Script filtering lists (rows of tables) in pure JavaScript. [Readme in Russian](
 
 ## Use
 
-### 1. Downloading files
+### 1. Download files
 
 Make a project cloning in the terminal
 
@@ -25,7 +25,7 @@ git clone git@github.com:denzakh/dz-live-filter.git
 
 Or download [ZIP archive](https://github.com/denzakh/dz-live-filter/archive/master.zip)
 
-### 2. Connection
+### 2. Installation
 
 You can use it as a CommonJS module, an AMD module, or just plug the script into HTML.
 
@@ -97,7 +97,7 @@ animationCallback: function aimationCallback (itemNode, result) {
 }
 ```
 
-### 4. Разметка
+### 4. HTML
 
 * In the HTML page, you need to add a block wrapper with the class specified in the `rootTag` ("js-shedule") property.
 * It must have a form with the class specified in the property `controlFormTag` ("js-control-form") and a block with a list.
@@ -190,7 +190,7 @@ This can be used to display a missing item message.
 
 ### Limitations and dependencies
 
-Uses the [formData] object (https://developer.mozilla.org/en-US/docs/Web/API/FormData)
- and the `FormData.entries()` method, which have [limited support] (https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) in IE and Safari
+Uses the [formData object](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+ and the `FormData.entries()` method, which have [limited support](https://developer.mozilla.org/en-US/docs/Web/API/FormData#Browser_compatibility) in IE and Safari
 
 To solve this problem you can connect [formdata-polyfill](https://www.npmjs.com/package/formdata-polyfill)
