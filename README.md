@@ -6,7 +6,7 @@ Script filtering lists (rows of tables) in <span style="background: yellow">pure
 * Allows you to easily add any number of filters using the `input` tags.
 * Opens items in sequence.
 
-![](https://img.shields.io/github/repo-size/denzakh/dz-live-filter.svg)
+![](https://img.shields.io/github/size/denzakh/dz-live-filter/dz-live-filter.js.min.svg?label=js%20min%20size)
 ![](https://img.shields.io/static/v1.svg?label=version&message=1.4.0&color=orange)
 ![](https://img.shields.io/github/last-commit/denzakh/dz-live-filter.svg)
 ![](https://img.shields.io/badge/license-Apache%202-blue.svg) 

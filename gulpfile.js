@@ -41,6 +41,5 @@ function watch(cb) {
 	console.log('Running watch...');
 }
 
-// КОМАНДЫ ЗАПУСКА
 exports.default = gulp.series(gulp.parallel(js), watch);
 exports.build = gulp.series(gulp.parallel(js));
