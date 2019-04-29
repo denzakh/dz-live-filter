@@ -1,0 +1,8 @@
+!.gitignore
+.htaccess
+.idea
+.editorconfig
+.gitattributes
+package-lock.json
+/node_modules
+

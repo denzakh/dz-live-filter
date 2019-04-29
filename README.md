@@ -84,10 +84,10 @@ During initialization, the `dzLiveFilter` function accepts a settings object wit
 | Setting name             | Type             | Default                   | Description |
 |--------------------------|------------------|---------------------------|--------------------------------------------------------------------------------------------------|
 | rootTag                  | string           | ".js-shedule"             | root class                                                                                      |
-| itemTag                  | string           | ".js-shedule-item"        | item class списка                                                                             |
+| itemTag                  | string           | ".js-shedule-item"        | item class                                                                            |
 | [categoryTag]            | string           | ".js-shedule-category"    | category class                                                                                  |
 | controlFormTag           | string           | ".js-control-form"        | form class  |
-| controlTag               | string           | ".js-control"             | control class (фильтра)                                                                   |
+| controlTag               | string           | ".js-control"             | control class                                                                   |
 | [delay=0]                | number or string | 0                         | the speed of the appearance of points (can greatly slow down the sorting)                               |
 | [animationCallback]      | function         | См. ниже                  | the function of processing items (rows) of the table. See below.                                        |
 | [afterFiltrationCallback]| function         | -                         | function after filtering.                                                          |

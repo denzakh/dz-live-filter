@@ -1,0 +1,35 @@
+{
+  "name": "Idei-project",
+  "version": "1.0.0",
+  "description": "Сайт 2018",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "*",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "eslint": "^5.12.1",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "*",
+    "gulp-rename": "*",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gulp-util": "*",
+    "natives": "^1.1.6",
+    "path": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "author": "Denis Zakharchenko",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
