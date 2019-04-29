@@ -26,7 +26,7 @@ function js(cb) {
 		))
 		.bundle()
 		.pipe(source("dz-live-filter.js"))
-		.pipe(rename("dz-live-filter.js.min.js"))
+		.pipe(rename("dz-live-filter.min.js"))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify())
